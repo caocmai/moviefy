@@ -22,6 +22,9 @@ struct Request {
     public enum Route: String{
         case movies = "discover/movie"
         case upcomingMovies = "/movie/top_rated"
+        case token = "authentication/token/new"
+        case session = "authentication/session/new"
+        case account = "account"
         
     }
     

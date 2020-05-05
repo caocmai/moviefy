@@ -26,7 +26,7 @@
         <!--Profile-->
         <scene sceneID="Uhe-l8-oEh">
             <objects>
-                <viewController title="Profile" id="8HR-D1-k4r" sceneMemberID="viewController">
+                <viewController title="Profile" id="8HR-D1-k4r" customClass="LoginViewController" customModule="Moviefy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Swh-ze-r4t">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -42,12 +42,18 @@
                                 <rect key="frame" x="166" y="462" width="42" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Log In"/>
+                                <connections>
+                                    <action selector="logInButtonTapped:" destination="8HR-D1-k4r" eventType="touchUpInside" id="09o-LL-LN4"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="PfG-4T-bHw"/>
                     </view>
                     <navigationItem key="navigationItem" id="7o4-ei-mIu"/>
+                    <connections>
+                        <outlet property="logInLabel" destination="WaA-le-l9g" id="IYc-ko-caW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uwj-Bi-ZMY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

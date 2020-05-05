@@ -11,6 +11,10 @@
 		2C30B698245A3257003EDED1 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C30B697245A3257003EDED1 /* Request.swift */; };
 		2C30B69A245A3422003EDED1 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C30B699245A3422003EDED1 /* Encoder.swift */; };
 		2C30B69C245A3447003EDED1 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C30B69B245A3447003EDED1 /* Response.swift */; };
+		2CBBD4372460DF27000CD293 /* AuthenticationTokenReponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBBD4362460DF27000CD293 /* AuthenticationTokenReponse.swift */; };
+		2CBBD4392460DF31000CD293 /* CreateSessionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBBD4382460DF31000CD293 /* CreateSessionResponse.swift */; };
+		2CBBD43B2460DF3B000CD293 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBBD43A2460DF3B000CD293 /* Account.swift */; };
+		2CBBD43D2460DF90000CD293 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBBD43C2460DF90000CD293 /* LoginViewController.swift */; };
 		AB9F57FA243D54F1006612A3 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F57F8243D54F1006612A3 /* MovieCell.swift */; };
 		AB9F57FB243D54F1006612A3 /* MovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB9F57F9243D54F1006612A3 /* MovieCell.xib */; };
 		AB9F57FE243D57FF006612A3 /* MovieSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F57FD243D57FF006612A3 /* MovieSection.swift */; };
@@ -47,6 +51,10 @@
 		2C30B697245A3257003EDED1 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		2C30B699245A3422003EDED1 /* Encoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encoder.swift; sourceTree = "<group>"; };
 		2C30B69B245A3447003EDED1 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		2CBBD4362460DF27000CD293 /* AuthenticationTokenReponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationTokenReponse.swift; sourceTree = "<group>"; };
+		2CBBD4382460DF31000CD293 /* CreateSessionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSessionResponse.swift; sourceTree = "<group>"; };
+		2CBBD43A2460DF3B000CD293 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		2CBBD43C2460DF90000CD293 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AB9F57F8243D54F1006612A3 /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		AB9F57F9243D54F1006612A3 /* MovieCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCell.xib; sourceTree = "<group>"; };
 		AB9F57FD243D57FF006612A3 /* MovieSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSection.swift; sourceTree = "<group>"; };
@@ -111,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				ABAB4F0B241A172E001E85CA /* ViewController.swift */,
+				2CBBD43C2460DF90000CD293 /* LoginViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -119,6 +128,9 @@
 			isa = PBXGroup;
 			children = (
 				AB9F580F243D6820006612A3 /* Movie.swift */,
+				2CBBD4362460DF27000CD293 /* AuthenticationTokenReponse.swift */,
+				2CBBD4382460DF31000CD293 /* CreateSessionResponse.swift */,
+				2CBBD43A2460DF3B000CD293 /* Account.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -144,6 +156,7 @@
 			children = (
 				ABAB4F07241A172E001E85CA /* AppDelegate.swift */,
 				ABAB4F09241A172E001E85CA /* SceneDelegate.swift */,
+				2C30B6AA245A7B82003EDED1 /* Networking */,
 				AB9F580E243D680D006612A3 /* Model */,
 				AB9F5806243D6495006612A3 /* Controller */,
 				AB9F57FC243D57D3006612A3 /* Sections */,
@@ -152,7 +165,6 @@
 				ABAB4F0D241A172E001E85CA /* Main.storyboard */,
 				ABAB4F12241A1732001E85CA /* LaunchScreen.storyboard */,
 				ABAB4F15241A1732001E85CA /* Info.plist */,
-				2C30B6AA245A7B82003EDED1 /* Networking */,
 			);
 			path = Moviefy;
 			sourceTree = "<group>";
@@ -242,11 +254,15 @@
 				ABAB4F0C241A172E001E85CA /* ViewController.swift in Sources */,
 				2C30B696245A323D003EDED1 /* APIClient.swift in Sources */,
 				2C30B69C245A3447003EDED1 /* Response.swift in Sources */,
+				2CBBD43B2460DF3B000CD293 /* Account.swift in Sources */,
 				ABAB4F08241A172E001E85CA /* AppDelegate.swift in Sources */,
 				AB9F5810243D6820006612A3 /* Movie.swift in Sources */,
+				2CBBD4372460DF27000CD293 /* AuthenticationTokenReponse.swift in Sources */,
 				AB9F57FA243D54F1006612A3 /* MovieCell.swift in Sources */,
 				2C30B698245A3257003EDED1 /* Request.swift in Sources */,
 				ABAB4F0A241A172E001E85CA /* SceneDelegate.swift in Sources */,
+				2CBBD43D2460DF90000CD293 /* LoginViewController.swift in Sources */,
+				2CBBD4392460DF31000CD293 /* CreateSessionResponse.swift in Sources */,
 				2C30B69A245A3422003EDED1 /* Encoder.swift in Sources */,
 				AB9F57FE243D57FF006612A3 /* MovieSection.swift in Sources */,
 			);
