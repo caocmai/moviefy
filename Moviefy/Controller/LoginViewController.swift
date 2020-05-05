@@ -15,7 +15,7 @@ class LoginViewController: UIViewController, ASWebAuthenticationPresentationCont
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -24,11 +24,10 @@ class LoginViewController: UIViewController, ASWebAuthenticationPresentationCont
         APIClient.shared.createRequestToken { (result) in
             switch result{
             case let .success(token):
-            DispatchQueue.main.async {
-                print(token.request_token)
-                self.authorizeRequestToken(from: self, requestToken: token.request_token)
-                self.getUsername()
-            }
+                DispatchQueue.main.async {
+                    print(token.request_token)
+                    self.authorizeRequestToken(from: self, requestToken: token.request_token)
+                }
             case let .failure(error):
                 print(error)
             }
@@ -53,11 +52,16 @@ class LoginViewController: UIViewController, ASWebAuthenticationPresentationCont
             
             // The callback URL format depends on the provider.
             let queryItems = URLComponents(string: callbackURL.absoluteString)?.queryItems
-//            print(queryItems)
+            print(queryItems)
             guard let requestToken = queryItems?.first(where: { $0.name == "request_token" })?.value else { return }
             let approved = (queryItems?.first(where: { $0.name == "approved" })?.value == "true")
             
             print("Request token \(requestToken) \(approved ? "was" : "was NOT") approved")
+            
+            self.startSession(requestToken: requestToken) { success in
+                print("Session started")
+
+            }
         }
         session.presentationContextProvider = self
         session.start()
@@ -70,35 +74,25 @@ class LoginViewController: UIViewController, ASWebAuthenticationPresentationCont
             case let .success(session):
                 DispatchQueue.main.async {
                     print(session.session_id)
+                    self.getUsername(from: session.session_id)
+                }
+            case let .failure(error):
+                print(error)
+            }
+        }
+    }
+    
+    func getUsername(from sessionID: String){
+        APIClient.shared.getAccount(sessionID: sessionID) { (result) in
+            switch result{
+            case let .success(session):
+                DispatchQueue.main.async {
+                    self.logInLabel.text = "Login As: \(session.username!)"
                 }
             case let .failure(error):
                 print(error)
             }
         }
         
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
-
-}
-    
-    func getUsername(){
-        APIClient.shared.getAccount() { (result) in
-                    switch result{
-                    case let .success(session):
-                        DispatchQueue.main.async {
-                            print(session.username!)
-                        }
-                    case let .failure(error):
-                        print(error)
-                    }
-    }
-    
-}
 }

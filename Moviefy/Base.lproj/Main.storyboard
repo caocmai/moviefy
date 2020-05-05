@@ -31,23 +31,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Log in As" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WaA-le-l9g" userLabel="Log in As">
-                                <rect key="frame" x="164" y="416" width="71" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o6F-rQ-YQo">
-                                <rect key="frame" x="166" y="462" width="42" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Log In"/>
-                                <connections>
-                                    <action selector="logInButtonTapped:" destination="8HR-D1-k4r" eventType="touchUpInside" id="09o-LL-LN4"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="ll5-Cl-Z7q">
+                                <rect key="frame" x="5" y="395.5" width="404" height="105"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WaA-le-l9g" userLabel="Log in As">
+                                        <rect key="frame" x="177" y="0.0" width="50" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o6F-rQ-YQo">
+                                        <rect key="frame" x="181" y="75" width="42" height="30"/>
+                                        <state key="normal" title="Log In"/>
+                                        <connections>
+                                            <action selector="logInButtonTapped:" destination="8HR-D1-k4r" eventType="touchUpInside" id="09o-LL-LN4"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="PfG-4T-bHw" firstAttribute="trailing" secondItem="ll5-Cl-Z7q" secondAttribute="trailing" constant="5" id="3yG-dG-jhr"/>
+                            <constraint firstItem="ll5-Cl-Z7q" firstAttribute="centerX" secondItem="Swh-ze-r4t" secondAttribute="centerX" id="Wts-ww-oCo"/>
+                            <constraint firstItem="ll5-Cl-Z7q" firstAttribute="centerY" secondItem="Swh-ze-r4t" secondAttribute="centerY" id="ajg-AP-cfC"/>
+                            <constraint firstItem="ll5-Cl-Z7q" firstAttribute="leading" secondItem="PfG-4T-bHw" secondAttribute="leading" constant="5" id="d5y-4S-57t"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="PfG-4T-bHw"/>
                     </view>
                     <navigationItem key="navigationItem" id="7o4-ei-mIu"/>
