@@ -20,7 +20,6 @@ class LoginViewController: UIViewController, ASWebAuthenticationPresentationCont
     }
     
     @IBAction func logInButtonTapped(_ sender: Any) {
-        
         APIClient.shared.createRequestToken { (result) in
             switch result{
             case let .success(token):
@@ -45,14 +44,13 @@ class LoginViewController: UIViewController, ASWebAuthenticationPresentationCont
         guard let authURL = URL(string: "https://www.themoviedb.org/authenticate/\(requestToken)?redirect_to=moviefy://auth") else { return }
         let scheme = "auth"
         // Initialize the session using the class from AuthenticationServices
-        let session = ASWebAuthenticationSession(url: authURL, callbackURLScheme: scheme)
-        { callbackURL, error in
+        let session = ASWebAuthenticationSession(url: authURL, callbackURLScheme: scheme) { callbackURL, error in
             // Handle the callback.
             guard error == nil, let callbackURL = callbackURL else { return }
             
             // The callback URL format depends on the provider.
             let queryItems = URLComponents(string: callbackURL.absoluteString)?.queryItems
-            print(queryItems)
+//            print(queryItems)
             guard let requestToken = queryItems?.first(where: { $0.name == "request_token" })?.value else { return }
             let approved = (queryItems?.first(where: { $0.name == "approved" })?.value == "true")
             
@@ -60,20 +58,19 @@ class LoginViewController: UIViewController, ASWebAuthenticationPresentationCont
             
             self.startSession(requestToken: requestToken) { success in
                 print("Session started")
-
+                
             }
         }
         session.presentationContextProvider = self
         session.start()
     }
     
-    
     func startSession(requestToken: String, completion: @escaping (Bool) -> Void) {
         APIClient.shared.createSession(requestToken: requestToken) { (result) in
             switch result{
             case let .success(session):
                 DispatchQueue.main.async {
-                    print(session.session_id)
+//                    print(session.session_id)
                     self.getUsername(from: session.session_id)
                 }
             case let .failure(error):
@@ -85,9 +82,9 @@ class LoginViewController: UIViewController, ASWebAuthenticationPresentationCont
     func getUsername(from sessionID: String){
         APIClient.shared.getAccount(sessionID: sessionID) { (result) in
             switch result{
-            case let .success(session):
+            case let .success(userObject):
                 DispatchQueue.main.async {
-                    self.logInLabel.text = "Login As: \(session.username!)"
+                    self.logInLabel.text = "Login As: \(userObject.username!)"
                 }
             case let .failure(error):
                 print(error)

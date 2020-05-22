@@ -14,8 +14,6 @@ class ViewController: UIViewController {
     var sections: [Section] = []
     private var popMovies: [Movie] = []
     
-    
-    
     override func viewDidAppear(_ animated: Bool) {
           super.viewDidAppear(animated)
     }
@@ -25,9 +23,7 @@ class ViewController: UIViewController {
         self.title = "Home"
         self.view.backgroundColor = UIColor.white
         fetchPopular()
-
         fetUpcoming()
-
     }
     
     func setupCollectionView() {
@@ -41,13 +37,10 @@ class ViewController: UIViewController {
         collectionView.backgroundColor = UIColor.white
         collectionView.register(UINib(nibName: MovieCell.identifier, bundle: .main), forCellWithReuseIdentifier: MovieCell.identifier)
         collectionView.register(UINib(nibName: TitleCell.identifier, bundle: .main), forCellWithReuseIdentifier: TitleCell.identifier)
-        
-        
         self.view.addSubview(collectionView)
     }
     
     func fetchPopular(){
-        
         APIClient.shared.getPopularMovies { (result) in
             switch result{
             case let .success(movies):
@@ -75,15 +68,12 @@ class ViewController: UIViewController {
             case let .success(movies):
                 DispatchQueue.main.async {
 //                    self.popMovies = movies
-
                     var upCompingSection = MovieSection()
                     self.sections.append(TitleSection(title: "Now Playing Movies"))
-
                     upCompingSection.numberOfItems = movies.count
                     upCompingSection.items = movies
                     self.sections.append(upCompingSection)
                     self.setupCollectionView()
-                    
                 }
             case let .failure(error):
                 print(error)
@@ -96,14 +86,12 @@ extension ViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         sections.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         sections[section].numberOfItems
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-       
-        
         switch sections[indexPath.section] {
             
 //        case is MovieSection:
@@ -116,10 +104,8 @@ extension ViewController: UICollectionViewDataSource {
 //
 //            return section.configureCell(collectionView: collectionView, indexPath: indexPath)
         default:
-            
             return sections[indexPath.section].configureCell(collectionView: collectionView, indexPath: indexPath)
         }
-        
     }
 }
 
